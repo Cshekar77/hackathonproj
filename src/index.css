@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #6366f1;
+  --color-brand-secondary: #a855f7;
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+}
+
+body {
+  @apply bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300;
+  background-attachment: fixed;
+}
+
+.glass {
+  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800/50;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500;
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.15), transparent 40%),
+              radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.15), transparent 40%);
+}
+
+.report-content h3 {
+    @apply bg-slate-100 dark:bg-slate-800 p-2.5 rounded-lg border-l-4 border-emerald-500 font-bold mb-4;
+}
+
+.listing-card {
+    @apply border border-slate-200 dark:border-slate-700 p-4 rounded-xl my-2.5 bg-white dark:bg-slate-900 shadow-sm;
+}
+
+.circular-progress {
+  --size: 80px;
+  --half-size: calc(var(--size) / 2);
+  --stroke-width: 8px;
+  --radius: calc(var(--half-size) - (var(--stroke-width) / 2));
+  --circumference: calc(2 * 3.14159 * var(--radius));
+  width: var(--size);
+  height: var(--size);
+}
+
+.circular-progress circle {
+  cx: var(--half-size);
+  cy: var(--half-size);
+  r: var(--radius);
+  stroke-width: var(--stroke-width);
+  fill: none;
+  stroke-linecap: round;
+}
+
+.circular-progress .bg {
+  stroke: #e2e8f0;
+}
+
+.dark .circular-progress .bg {
+  stroke: #1e293b;
+}
+
+.circular-progress .fg {
+  stroke: #10b981;
+  stroke-dasharray: var(--circumference);
+  transition: stroke-dashoffset 1s ease-out;
+}
